@@ -174,66 +174,11 @@ namespace Introduction
                 Console.WriteLine();
             }
 
-            Console.Write("Введите размер доски:\n");
+            /*Console.Write("Введите размер доски:\n");
             int n1 = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите размер ячеек:\n");
-            int n2 = Convert.ToInt32(Console.ReadLine());
-            string[,] arr1 = new string[n2, n2];
-            string[,] arr2 = new string[n2, n2];
-            for (int i = 0; i < n2; i++)
-            {
-                for (int j = 0; j < n2; j++)
-                {
-                    arr1[i , j] = "██";
-                    arr2[i , j] = "  ";
-                }
-            }
-            for (int i = 0; i < n2; i++)
-            {
-
-                for (int j = 0; j < n2; j++)
-                {
-                    Console.Write(arr1[i, j]);
-                }
-                Console.WriteLine();
-            }
-            bool flag = true;
-                int count = 0;
-            for (int i = 0; i < n1 * n2; i++)
-            {
-                for (int j = 0; j < n1 * n2; j++)
-                {
-                    if(flag)
-                    {
-                        Console.Write("██");
-                        count++;
-                    }
-                    else
-                    {
-                        Console.Write("  ");
-                    }
-                    if (n2 - count == 0)
-                    {
-                        count = 0;
-                        if(flag) flag = false;
-                        else flag = true;
-                    }
-
-                    Console.WriteLine();
-                }
-            }
-
-            void print_arr(string[, ] arr, int width, int height) 
-            {
-                for (int i = 0; i < width; i++)
-                {
-
-                    for (int j = 0; j < height; j++)
-                    {
-                        Console.Write(arr[i, j]);
-                    }
-                }
-            }
+            int n2 = Convert.ToInt32(Console.ReadLine());*/
+            
         }
     }
 }
