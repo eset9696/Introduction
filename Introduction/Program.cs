@@ -82,10 +82,11 @@ namespace Introduction
                 else if (key.Key == ConsoleKey.F) { Console.WriteLine("фонарик"); }
             } while (key.Key != ConsoleKey.Escape); 
 #endif
-            int size = 5;
-            /*for (int i = 0; i < size; i++) 
+            Console.Write("Введите размер фигуры:\t");
+            int size = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < size; i++)
             {
-                for(int j = 0; j < size; j++)
+                for (int j = 0; j < size; j++)
                 {
                     Console.Write('*');
                 }
@@ -136,16 +137,16 @@ namespace Introduction
                 Console.WriteLine();
             }
             Console.WriteLine(delimeter);
-*/
-            /*for (int i = 0; i < 2 * size; i++)
+
+            for (int i = 0; i < 2 * size; i++)
             {
-                
+
                 for (int k = size - i - 1; i <= size ? k > 0 : k >= 2 * (size - i); k--)
                 {
                     Console.Write(" ");
                 }
                 Console.Write(i < size ? '/' : '\\');
-                for  (int j = 1; i < size ? j <= i : j < (2 * size - i); j++)
+                for (int j = 1; i < size ? j <= i : j < (2 * size - i); j++)
                 {
                     Console.Write("  ");
                 }
@@ -162,7 +163,7 @@ namespace Introduction
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine(delimeter);*/
+            Console.WriteLine(delimeter);
             Console.Write("Введите размер доски:\n");
             int n = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < n; i++) 
@@ -174,11 +175,40 @@ namespace Introduction
                 Console.WriteLine();
             }
 
-            /*Console.Write("Введите размер доски:\n");
+            Console.Write("Введите размер доски:\n");
             int n1 = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите размер ячеек:\n");
-            int n2 = Convert.ToInt32(Console.ReadLine());*/
-            
+            int n2 = Convert.ToInt32(Console.ReadLine());
+            int count = 0;
+            bool flag;
+            for(int i = 0; i < n1 * n2;i++)
+            {
+                if ((i / n2) % 2 == 0) flag = false;
+                else flag = true;
+                for (int j = 0; j < n1 * n2; j++)
+                {
+                    if (flag)
+                    {
+                        Console.Write("* ");
+                        if (count++ == n2 - 1)
+                        {
+                            flag = false;
+                            count = 0;
+                        }
+                    }
+                    else
+                    {
+                        Console.Write("  ");
+                        if (count++ == n2 - 1)
+                        {
+                            flag = true;
+                            count = 0;
+                        }
+                    }
+                }
+                Console.WriteLine();
+            }
+
         }
     }
 }
