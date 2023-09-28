@@ -71,12 +71,12 @@ namespace DataTypes
 
 #if VARIABLES_TASK
 			//#1
-			/*Console.WriteLine("Преобразование числа в денежный формат.");
+			Console.WriteLine("Преобразование числа в денежный формат.");
 			Console.WriteLine("Введите дробное число:");
-			double num = Convert.ToDouble(Console.ReadLine());
+			double num = Convert.ToDouble(Console.ReadLine().Replace('.', ','));
 			int integ = (int)num;
 			int fraction = (int)((num - integ) * 100 + 0.00000001);
-			Console.WriteLine($"{num} руб. это {integ} руб. {fraction} коп.");*/
+			Console.WriteLine($"{num} руб. это {integ} руб. {fraction} коп.");
 
 			//#2
 			/*Console.WriteLine("Вычисление стоимости покупки.");
@@ -107,7 +107,7 @@ namespace DataTypes
 			Console.WriteLine($"Стоимость покупки: {result} руб.");*/
 
 			//#4
-			Console.WriteLine("Вычисление стоимости поездки на дачу туда и обратно.");
+			/*Console.WriteLine("Вычисление стоимости поездки на дачу туда и обратно.");
 			double result = 0;
 			Console.WriteLine("Расстояние до дачи:");
 			double distance = Convert.ToDouble(Console.ReadLine());
@@ -116,7 +116,7 @@ namespace DataTypes
 			Console.WriteLine("Цена бензина (руб.):");
 			double petrol_price = Convert.ToDouble(Console.ReadLine());
 			result = (2 * distance / 100) * consumption * petrol_price;
-			Console.WriteLine($"Поездка на дачу и обратно обойдется в {result} руб.");
+			Console.WriteLine($"Поездка на дачу и обратно обойдется в {result} руб.");*/
 #endif
 
 #if CALCULATOR
