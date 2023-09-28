@@ -24,11 +24,36 @@ namespace Arrays
 				Console.Write(arr[i] + " ");
 			}
             Console.WriteLine();
-            foreach (int i in arr)
+			//hw
+			int arr_sum = arr.Sum();
+			int arr_sum1 = 0;
+			foreach (int i in arr)
             {
-				Console.Write(i + " ");
+				arr_sum1 += i;
 			}
-			Console.WriteLine();
+			
+			double arr_avg = arr.Average();
+			double arr_avg1 = arr_sum1 / (double)arr.Length;
+
+			int arr_max = arr.Max();
+			int arr_max1 = arr[0];
+			foreach (int i in arr)
+			{
+				if (i > arr_max1) arr_max1 = i;
+			}
+
+			int arr_min = arr.Min();
+			int arr_min1 = arr[0];
+			foreach (int i in arr)
+			{
+				if (i < arr_min1) arr_min1 = i;
+			}
+			
+			Console.WriteLine("Arr sum: " + arr_sum + " " + arr_sum1);
+			Console.WriteLine("Arr avg: " + arr_avg + " " + arr_avg1);
+			Console.WriteLine("Arr max: " + arr_max + " " + arr_max1);
+			Console.WriteLine("Arr min: " + arr_min + " " + arr_min1);
+			//hw end
 			Console.WriteLine(delimeter);
 
 			//////////////////////////////////////////////////////////////////////////////
@@ -62,6 +87,34 @@ namespace Arrays
 				Console.Write(i + "\t");
 			}
             Console.WriteLine();
+
+			//hw
+			int i_arr_2_sum1 = 0;
+			foreach (int i in i_arr_2)
+			{
+				i_arr_2_sum1 += i;
+			}
+
+			double i_arr_2_avg1 = i_arr_2_sum1 / (double)i_arr_2.Length;
+
+			int i_arr_2_max1 = i_arr_2[0, 0];
+			foreach (int i in i_arr_2)
+			{
+				if (i > i_arr_2_max1) i_arr_2_max1 = i;
+			}
+
+			int i_arr_2_min1 = i_arr_2[0, 0];
+			foreach (int i in i_arr_2)
+			{
+				if (i < i_arr_2_min1) i_arr_2_min1 = i;
+			}
+
+			Console.WriteLine("Arr sum: " + i_arr_2_sum1);
+			Console.WriteLine("Arr avg: " + i_arr_2_avg1);
+			Console.WriteLine("Arr max: " + i_arr_2_max1);
+			Console.WriteLine("Arr min: " + i_arr_2_min1);
+			//hw end
+
 			Console.WriteLine(delimeter);
 			///////////////////////////////////////////////////////////////////////////////////
 			
@@ -79,7 +132,50 @@ namespace Arrays
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine(delimeter);
+			//hw
+			int jagged_arr_sum1 = 0;
+			for (int i = 0; i < jagged_arr.GetLength(0); i++)
+			{
+				foreach (int j in jagged_arr[i])
+				{
+					jagged_arr_sum1 += j;
+				} 
+			}
+
+			double count = 0;
+			for(int i = 0; i < jagged_arr.GetLength(0); i++)
+			{
+				count += jagged_arr[i].Length;
+			}
+			double jagged_arr_avg1 = jagged_arr_sum1 / count;
+
+			int jagged_arr_max1 = jagged_arr[0][0];
+			for (int i = 0; i < jagged_arr.GetLength(0); i++)
+			{
+				foreach (int j in jagged_arr[i])
+				{
+					if (j > jagged_arr_max1) jagged_arr_max1 = j;
+				} 
+			}
+
+			int jagged_arr_min1 = jagged_arr[0][0];
+			for (int i = 0; i < jagged_arr.GetLength(0); i++)
+			{
+				foreach (int j in jagged_arr[i])
+				{
+					if (j < jagged_arr_min1) jagged_arr_min1 = j;
+				}
+			}
+
+			Console.WriteLine("Arr sum: " + jagged_arr_sum1);
+			Console.WriteLine("Arr avg: " + jagged_arr_avg1);
+			Console.WriteLine("Arr max: " + jagged_arr_max1);
+			Console.WriteLine("Arr min: " + jagged_arr_min1);
+			//hw end
+
+
+
+			Console.WriteLine(delimeter);
             int[][,] jagged_arr_2 = new int[][,]
 			{
 				i_arr_2,
@@ -101,6 +197,48 @@ namespace Arrays
                 }
 				Console.WriteLine();
 			}
+
+
+			//hw
+			int jagged_arr_2_sum1 = 0;
+			for (int i = 0; i < jagged_arr_2.GetLength(0); i++)
+			{
+				foreach (int j in jagged_arr_2[i])
+				{
+					jagged_arr_2_sum1 += j;
+				}
+			}
+
+			double count_2 = 0;
+			for (int i = 0; i < jagged_arr_2.GetLength(0); i++)
+			{
+				count_2 += jagged_arr_2[i].Length;
+			}
+			double jagged_arr_2_avg1 = jagged_arr_2_sum1 / count_2;
+
+			int jagged_arr_2_max1 = jagged_arr_2[0][0 , 0];
+			for (int i = 0; i < jagged_arr_2.GetLength(0); i++)
+			{
+				foreach (int j in jagged_arr_2[i])
+				{
+					if (j > jagged_arr_2_max1) jagged_arr_2_max1 = j;
+				}
+			}
+
+			int jagged_arr_2_min1 = jagged_arr_2[0][0, 0];
+			for (int i = 0; i < jagged_arr_2.GetLength(0); i++)
+			{
+				foreach (int j in jagged_arr_2[i])
+				{
+					if (j < jagged_arr_2_min1) jagged_arr_2_min1 = j;
+				}
+			}
+
+			Console.WriteLine("Arr sum: " + jagged_arr_2_sum1);
+			Console.WriteLine("Arr avg: " + jagged_arr_2_avg1);
+			Console.WriteLine("Arr max: " + jagged_arr_2_max1);
+			Console.WriteLine("Arr min: " + jagged_arr_2_min1);
+			//hw end
 		}
 	}
 }
