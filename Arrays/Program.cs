@@ -31,10 +31,6 @@ namespace Arrays
 			int arr_max = array_max(arr);
 			int arr_min = array_min(arr);
 
-
-
-
-
 			Console.WriteLine("Arr sum: " + arr_sum);
 			Console.WriteLine("Arr avg: " + arr_avg);
 			Console.WriteLine("Arr max: " + arr_max);
