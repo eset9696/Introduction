@@ -18,6 +18,11 @@ namespace Fraction
 			Fraction fraction2 = new Fraction( 1, 2, 4);
 			fraction2.Print();
             Console.WriteLine(fraction1 == fraction2);
+			Fraction fraction3 = fraction1 + fraction2;
+			fraction1.Print();
+			fraction2.Print();
+			fraction3.Print();
+
         }
 	}
 	class Fraction
