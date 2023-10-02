@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define HOME_WORK
+//#define COUNSTRUCTORS_CHECK
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,18 +15,40 @@ namespace Fraction
 		readonly static string delimeter = "\n-------------------------------------------------------\n";
 		static void Main(string[] args)
 		{
-			Fraction fraction1 = new Fraction( 2, 1, 4);
-			fraction1.Print();
-			Fraction fraction2 = new Fraction( 1, 2, 4);
-			fraction2.Print();
-            Console.WriteLine(fraction1 == fraction2);
-			Fraction fraction3 = fraction1 + fraction2;
-			fraction1.Print();
-			fraction2.Print();
-			fraction3.Print();
+			Fraction A = new Fraction(2, 3, 4);
+			Fraction B = new Fraction(3, 4, 5);
+			Fraction C = A * B;
+			Console.WriteLine($"{A} * {B} = {C}");
+			C = A / B;
+			Console.WriteLine($"{A} / {B} = {C}");
+			B.Print();
 
-        }
+#if COUNSTRUCTORS_CHECK
+			Fraction A = new Fraction();
+			A.Print();
+			A.Integer = 123;
+			A.Numerator = 456;
+			A.Denominator = 789;
+			Console.WriteLine(A);
+			Fraction B = new Fraction(5);
+			B.Print();
+			Console.WriteLine(B);
+			Fraction C = new Fraction(2, 3);
+			C.Print();
+			Console.WriteLine(C);
+			Fraction D = new Fraction(2, 3, 0);
+			D.Print();
+			Console.WriteLine(D);
+			Fraction E = new Fraction();
+			E = D;
+			D.Integer = 5;
+			D.Print();
+			E.Print(); 
+#endif
+
+		}
 	}
+#if HOME_WORK
 	class Fraction
 	{
 		private int integer;
@@ -57,7 +81,7 @@ namespace Fraction
 
 		public void set_denominator(int denominator)
 		{
-			if(denominator == 0) denominator = 1;
+			if (denominator == 0) denominator = 1;
 			this.denominator = denominator;
 		}
 
@@ -81,7 +105,7 @@ namespace Fraction
 			set_denominator(other.get_denominator());
 		}
 
-		public static Fraction operator++(Fraction fraction)
+		public static Fraction operator ++(Fraction fraction)
 		{
 			return new Fraction(fraction.integer + 1, fraction.numerator, fraction.denominator);
 		}
@@ -171,7 +195,7 @@ namespace Fraction
 		{
 			return !(left < right);
 		}
-		public Fraction ToImproper() 
+		public Fraction ToImproper()
 		{
 			this.numerator += this.integer * this.denominator;
 			this.integer = 0;
@@ -197,7 +221,7 @@ namespace Fraction
 			int more, less, rest;
 			more = denominator;
 			less = numerator;
-			if (less ==0) return this;
+			if (less == 0) return this;
 			do
 			{
 				rest = more % less;
@@ -212,15 +236,16 @@ namespace Fraction
 
 		public void Print()
 		{
-			if (get_integer() != 0)Console.Write(get_integer());
-			if (get_numerator() != 0) 
+			if (get_integer() != 0) Console.Write(get_integer());
+			if (get_numerator() != 0)
 			{
-				if(get_integer() != 0) Console.Write("(");
-                Console.Write($"{get_numerator()}/{get_denominator()}");
+				if (get_integer() != 0) Console.Write("(");
+				Console.Write($"{get_numerator()}/{get_denominator()}");
 				if (get_integer() != 0) Console.Write(")");
-            }
-            else if(get_integer() == 0)Console.WriteLine(0);
+			}
+			else if (get_integer() == 0) Console.WriteLine(0);
 			Console.WriteLine();
 		}
-	}
+	} 
+#endif
 }
