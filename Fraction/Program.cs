@@ -17,11 +17,15 @@ namespace Fraction
 		{
 			Fraction A = new Fraction(2, 3, 4);
 			Fraction B = new Fraction(3, 4, 5);
-			Fraction C = A * B;
-			Console.WriteLine($"{A} * {B} = {C}");
-			C = A / B;
-			Console.WriteLine($"{A} / {B} = {C}");
-			B.Print();
+			Fraction C = A + B;
+			Console.WriteLine($"{A} + {B} = {C}");
+			C = A - B;
+			Console.WriteLine($"{A} - {B} = {C}");
+			Fraction D = new Fraction(2.75);
+            Console.WriteLine(D);
+			Fraction E = new Fraction(Console.ReadLine());
+            Console.WriteLine(E);
+
 
 #if COUNSTRUCTORS_CHECK
 			Fraction A = new Fraction();

@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,6 +65,22 @@ namespace Fraction
 			Numerator = 0;
 			Denominator = 1;
 			Console.WriteLine($"1 parameter Constructor \t{this.GetHashCode()}");
+		}
+
+		public Fraction(double number)
+		{
+			number += 1e-10;
+			Integer = (int)number;
+			number -= Integer;
+			Denominator = (int)1e+9;
+			Numerator = (int) (number * Denominator);
+			Reduce();
+			Console.WriteLine($"1d parameter Constructor \t{this.GetHashCode()}");
+		}
+
+		public Fraction(string line): this(Convert.ToDouble(line.Replace('.', ',')))
+		{
+			Console.WriteLine($"1s parameter Constructor \t{this.GetHashCode()}");
 		}
 
 		public Fraction(int numerator, int denominator)
@@ -136,6 +154,35 @@ namespace Fraction
 			return inverted;
 		}
 
+		public Fraction Reduce()
+		{
+			this.toProper();
+			int more, less, rest;
+			more = Denominator;
+			less = Numerator;
+			if (less == 0) return this;
+			do
+			{
+				rest = more % less;
+				more = less;
+				less = rest;
+			} while (rest != 0);
+			int GCD = more;
+			Numerator /= GCD;
+			Denominator /= GCD;
+			return this;
+		}
+
+		public static Fraction operator ++(Fraction fraction)
+		{
+			return new Fraction(fraction.Integer + 1, fraction.Numerator, fraction.Denominator);
+		}
+
+		public static Fraction operator --(Fraction fraction)
+		{
+			return new Fraction(fraction.Integer - 1, fraction.Numerator, fraction.Denominator);
+		}
+
 		public static Fraction operator *(Fraction left, Fraction right)
 		{
 			Fraction t_left = new Fraction(left);
@@ -161,5 +208,54 @@ namespace Fraction
 				t_left.Denominator * t_right.Denominator).toProper();
 		}
 
+		public static Fraction operator -(Fraction left, Fraction right)
+		{
+			Fraction t_left = new Fraction(left);
+			Fraction t_right = new Fraction(right);
+			t_left.toImproper();
+			t_right.toImproper();
+			return new Fraction(
+				t_left.Numerator * t_right.Denominator - t_right.Numerator * t_left.Denominator,
+				t_left.Denominator * t_right.Denominator).toProper();
+		}
+
+		public static bool operator <(Fraction left, Fraction right)
+		{
+			Fraction t_left = new Fraction(left);
+			Fraction t_right = new Fraction(right);
+			t_left.toImproper();
+			t_right.toImproper();
+			return t_left.Numerator * t_right.Denominator < t_right.Numerator * t_left.Denominator;
+		}
+		public static bool operator >(Fraction left, Fraction right)
+		{
+			Fraction t_left = new Fraction(left);
+			Fraction t_right = new Fraction(right);
+			t_left.toImproper();
+			t_right.toImproper();
+			return t_left.Numerator * t_right.Denominator > t_right.Numerator * t_left.Denominator;
+		}
+
+		public static bool operator ==(Fraction left, Fraction right)
+		{
+			Fraction t_left = new Fraction(left);
+			Fraction t_right = new Fraction(right);
+			t_left.toImproper();
+			t_right.toImproper();
+			return t_left.Numerator * t_right.Denominator == t_right.Numerator * t_left.Denominator;
+		}
+		public static bool operator !=(Fraction left, Fraction right)
+		{
+			return !(left == right);
+		}
+
+		public static bool operator <=(Fraction left, Fraction right)
+		{
+			return !(left > right);
+		}
+		public static bool operator >=(Fraction left, Fraction right)
+		{
+			return !(left < right);
+		}
 	}
 }
